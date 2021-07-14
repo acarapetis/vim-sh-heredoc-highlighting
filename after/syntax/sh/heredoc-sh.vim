@@ -22,11 +22,11 @@ function! Def_heredoc(marker, contains)
     "let b:current_syntax = s:bcs
 
     execute "syntax region heredoc" . a:marker . " matchgroup=Snip "
-        \ "start=+<<'". a:marker . "'.*$+ end=+^" . a:marker . "\s*$+ containedin=@sh,@shHereDocHL contains=@" . a:contains
+        \ "start=+<<\s*'". a:marker . "'.*$+ end=+^" . a:marker . "\s*$+ containedin=@sh,@shHereDocHL contains=@" . a:contains
     execute "syntax region heredoc" . a:marker . "2 matchgroup=Snip "
-        \ "start=+<<\"". a:marker . "\".*$+ end=+^" . a:marker . "\s*$+ containedin=@sh,@shHereDocHL contains=@" . a:contains
+        \ "start=+<<\s*\"". a:marker . "\".*$+ end=+^" . a:marker . "\s*$+ containedin=@sh,@shHereDocHL contains=@" . a:contains
     execute "syntax region heredoc" . a:marker . "3 matchgroup=Snip "
-        \ "start=+<<". a:marker . ".*$+ end=+^" . a:marker . "\s*$+ containedin=@sh,@shHereDocHL contains=@" . a:contains
+        \ "start=+<<\s*". a:marker . ".*$+ end=+^" . a:marker . "\s*$+ containedin=@sh,@shHereDocHL contains=@" . a:contains
 
     execute "syntax cluster shHeredocHL add=heredoc" . a:marker
     execute "syntax cluster shHeredocHL add=heredoc" . a:marker . "2"
