@@ -1,8 +1,32 @@
 # vim-sh-heredoc-highlighting
-This vim plugin enables syntax highlighting for code snippets in shell (sh, bash, ksh, etc.) here-docs.
+This vim plugin enables syntax highlighting for code snippets in shell (sh,
+bash, ksh, etc.) here-docs.
 
-It will highlight shell, perl and python snippets when it sees heredocs
-delimited by the markers SHELL, PERL or PYTHON respectively. You should be able
-to extend this to whatever you want very easily by modifying
-[`heredoc-sh.vim`](after/syntax/sh/heredoc-sh.vim) following the pattern that's apparent. I'd make it
-configurable, but vimscript continues to elude me.
+It will highlight code snippets when it sees heredocs delimited by markers
+named after the corresponding language, e.g.:
+
+```sh
+python <<PYTHON
+import sys
+print(sys.path)
+PYTHON
+```
+
+The languages enabled by default are:
+
+- GNUPLOT
+- JSON
+- LUA
+- PERL
+- PYTHON
+- SHELL
+
+To configure additional languages, put a dictionary mapping markers to syntax
+names in the variable `g:heredocs`: e.g.
+
+```vim
+" in your vimrc
+let g:heredocs = {"SQL": "sql"}
+```
+
+would highlight heredocs delimited by `SQL` using `syntax/sql.vim`.
