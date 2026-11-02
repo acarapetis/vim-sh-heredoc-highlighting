@@ -1,4 +1,5 @@
 syntax cluster shHeredocHL contains=@sh
+hi def link Snip shRedir
 
 function! Def_heredoc(marker, contains)
     let s:bcs = b:current_syntax
