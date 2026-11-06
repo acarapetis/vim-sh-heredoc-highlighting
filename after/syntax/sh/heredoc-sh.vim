@@ -9,7 +9,8 @@ function! Def_heredoc(marker, contains)
     let b:current_syntax = s:bcs
 
     for [region, quotation] in items({"heredoc" . a:marker . "Plain": "", "heredoc" . a:marker . "SingleQuote": "'", "heredoc" . a:marker . "DoubleQuote": "\""})
-        execute "syntax region " . region . " matchgroup=Snip start=+<<[-]\\?\\s*" . quotation . a:marker . quotation . ".*$+ end=+\\s*" . a:marker . "\\s*$+ containedin=@sh,@shHereDocHL contains=@" . a:contains
+        execute "syntax region " . region . " matchgroup=Snip start=+<<\\s*" . quotation . a:marker . quotation . ".*$+ end=+^" . a:marker . "\\s*$+ containedin=@sh,@shHereDocHL contains=@" . a:contains
+        execute "syntax region " . region . " matchgroup=Snip start=+<<[-]\\s*" . quotation . a:marker . quotation . ".*$+ end=+^\\t*" . a:marker . "\\s*$+ containedin=@sh,@shHereDocHL contains=@" . a:contains
         execute "syntax cluster shHeredocHL add=" . region
     endfor
 endfunction
